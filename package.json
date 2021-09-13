@@ -1,0 +1,30 @@
+{
+    "lint-staged": {
+        "./frontend/src/**/*.jsx": [
+            "eslint --fix"
+        ]
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.3",
+        "@babel/plugin-proposal-class-properties": "^7.10.4",
+        "@babel/preset-env": "^7.4.3",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "html-webpack-plugin": "^3.2.0",
+        "path": "^0.12.7",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    },
+    "dependencies": {
+        "@nestjs/cli": "^8.1.0",
+        "eslint": "^7.25.0",
+        "ts-node": "^10.1.0"
+    },
+    "scripts": {
+        "build": "npm --prefix frontend install && NODE_ENV=production npm --prefix frontend run build && npm --prefix server install && NODE_ENV=production npm --prefix server run build",
+        "start:prod": "npm --prefix server run start:prod",
+        "deploy": "cp -a frontend/build/. public/",
+        "heroku-postbuild": "npm run build && npm run deploy",
+        "heroku-prebuild": "npm --prefix frontend install && npm --prefix server install "
+    }
+}
