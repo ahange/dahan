@@ -1,0 +1,6 @@
+# frontend/*
+app/*
+docs/*
+tmp/*
+server/node_modules/*
+server/dist/*
